@@ -4,21 +4,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ProLead AI – Smart Funnel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary-bg: #ffffff;
+      --primary-text: #1a1a1a;
+      --form-bg: #ffffff;
+      --accent: linear-gradient(to right, #ff416c, #ff4b2b);
+      --button-hover: linear-gradient(to right, #e63c5a, #e2431e);
+    }
+
+    body.dark {
+      --primary-bg: #1e1e1e;
+      --primary-text: #f1f1f1;
+      --form-bg: #2c2c2c;
+    }
+
     body {
       margin: 0;
       padding: 2rem;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #d0eaff, #f2f7ff);
+      font-family: 'Poppins', sans-serif;
+      background: var(--primary-bg);
+      color: var(--primary-text);
+      transition: background 0.3s, color 0.3s;
     }
 
     .form-container {
       max-width: 600px;
       margin: auto;
-      background: white;
+      background: var(--form-bg);
       padding: 30px;
-      border-radius: 16px;
+      border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: background 0.3s, color 0.3s;
     }
 
     .form-container img {
@@ -27,17 +45,8 @@
       margin: 0 auto 20px;
     }
 
-    .step {
-      display: none;
-    }
-
-    .step.active {
-      display: block;
-    }
-
     h2 {
       text-align: center;
-      color: #002e5b;
       margin-bottom: 20px;
     }
 
@@ -45,7 +54,6 @@
       display: block;
       margin-top: 15px;
       font-weight: 600;
-      color: #333;
     }
 
     input, textarea {
@@ -62,7 +70,19 @@
       font-weight: normal;
       display: block;
       margin-bottom: 6px;
-      color: #444;
+    }
+
+    .step {
+      display: none;
+      opacity: 0;
+      transform: translateX(30px);
+      transition: all 0.4s ease;
+    }
+
+    .step.active {
+      display: block;
+      opacity: 1;
+      transform: translateX(0);
     }
 
     .buttons {
@@ -71,107 +91,157 @@
     }
 
     .buttons button {
-      background: #0070f3;
+      background: var(--accent);
       color: white;
-      padding: 12px 20px;
+      padding: 14px 26px;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
       font-size: 16px;
+      font-weight: bold;
       cursor: pointer;
       margin: 5px;
+      transition: transform 0.2s ease, background 0.3s ease;
     }
 
     .buttons button:hover {
-      background: #005dc1;
+      transform: scale(1.05);
+      background: var(--button-hover);
+    }
+
+    .toggle-theme {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #ccc;
+      color: #000;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 14px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .progress {
+      width: 100%;
+      background: #eee;
+      height: 8px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: #0070f3;
+      width: 0%;
+      transition: width 0.3s ease;
     }
   </style>
 </head>
 <body>
 
-  <div class="form-container">
-    <img src="https://via.placeholder.com/160x80?text=ProLead+AI+Logo" alt="ProLead AI Logo" />
-    <h2>Let’s Build Your Smart Funnel</h2>
+<div class="toggle-theme" onclick="toggleDarkMode()">🌗 Toggle Theme</div>
 
-    <form id="leadForm" action="https://formspree.io/f/mdkzovba" method="POST">
-      <input type="hidden" name="_redirect" value="https://nickzarei.github.io/nickfunnel-form/thankyou.html" />
+<div class="form-container">
+  <img src="https://via.placeholder.com/160x80?text=ProLead+AI+Logo" alt="ProLead AI Logo" />
+  <h2>Let’s Build Your Smart Funnel 💡</h2>
 
-      <!-- Step 1 -->
-      <div class="step active">
-        <label>🚧 What’s keeping you from growing faster?</label>
-        <div class="radio-group">
-          <label><input type="checkbox" name="growth_block" value="Not enough qualified leads"> Not enough qualified leads</label>
-          <label><input type="checkbox" name="growth_block" value="Wasting money on wrong ads"> Wasting money on wrong ads</label>
-          <label><input type="checkbox" name="growth_block" value="Tech is overwhelming"> Tech is overwhelming</label>
-          <label><input type="checkbox" name="growth_block" value="Lack of structure"> Lack of structure</label>
-        </div>
-        <div class="buttons">
-          <button type="button" onclick="nextStep()">Next</button>
-        </div>
-      </div>
-
-      <!-- Step 2 -->
-      <div class="step">
-        <label>📣 How are you currently generating leads?</label>
-        <div class="radio-group">
-          <label><input type="checkbox" name="lead_method" value="Cold calling"> Cold calling</label>
-          <label><input type="checkbox" name="lead_method" value="Instagram Ads"> Instagram Ads</label>
-          <label><input type="checkbox" name="lead_method" value="Referrals only"> Referrals only</label>
-          <label><input type="checkbox" name="lead_method" value="No lead system"> No lead system</label>
-        </div>
-        <label>🌟 What result would make this year a breakthrough?</label>
-        <div class="radio-group">
-          <label><input type="checkbox" name="ideal_result" value="Consistent weekly leads"> Consistent weekly leads</label>
-          <label><input type="checkbox" name="ideal_result" value="Less work, better clients"> Less work, better clients</label>
-          <label><input type="checkbox" name="ideal_result" value="More automation"> More automation</label>
-        </div>
-        <div class="buttons">
-          <button type="button" onclick="prevStep()">Back</button>
-          <button type="button" onclick="nextStep()">Next</button>
-        </div>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="step">
-        <label>Your Name *</label>
-        <input type="text" name="name" required>
-        <label>Email Address *</label>
-        <input type="email" name="email" required>
-        <label>Phone Number *</label>
-        <input type="tel" name="phone" required>
-        <label>Social Media ID (optional)</label>
-        <input type="text" name="social" />
-
-        <div class="buttons">
-          <button type="button" onclick="prevStep()">Back</button>
-          <button type="submit">🎯 Submit</button>
-        </div>
-      </div>
-    </form>
+  <div class="progress">
+    <div class="progress-bar" id="progressBar"></div>
   </div>
 
-  <script>
-    let currentStep = 0;
-    const steps = document.querySelectorAll('.step');
+  <form id="leadForm" action="https://formspree.io/f/mdkzovba" method="POST">
+    <input type="hidden" name="_redirect" value="https://nickzarei.github.io/nickfunnel-form/thankyou.html" />
 
-    function showStep(index) {
-      steps.forEach((step, i) => {
-        step.classList.toggle('active', i === index);
-      });
-      currentStep = index;
-    }
+    <!-- Step 1 -->
+    <div class="step active">
+      <label>🚧 What’s keeping you from growing faster?</label>
+      <div class="radio-group">
+        <label><input type="checkbox" name="growth_block" value="Not enough qualified leads"> Not enough qualified leads</label>
+        <label><input type="checkbox" name="growth_block" value="Wasting money on wrong ads"> Wasting money on wrong ads</label>
+        <label><input type="checkbox" name="growth_block" value="Tech is overwhelming"> Tech is overwhelming</label>
+        <label><input type="checkbox" name="growth_block" value="Lack of structure"> Lack of structure</label>
+      </div>
+      <div class="buttons">
+        <button type="button" onclick="nextStep()">Next ➡️</button>
+      </div>
+    </div>
 
-    function nextStep() {
-      if (currentStep < steps.length - 1) {
-        showStep(currentStep + 1);
+    <!-- Step 2 -->
+    <div class="step">
+      <label>📣 How are you currently generating leads?</label>
+      <div class="radio-group">
+        <label><input type="checkbox" name="lead_method" value="Cold calling"> Cold calling</label>
+        <label><input type="checkbox" name="lead_method" value="Instagram Ads"> Instagram Ads</label>
+        <label><input type="checkbox" name="lead_method" value="Referrals only"> Referrals only</label>
+        <label><input type="checkbox" name="lead_method" value="No lead system"> No lead system</label>
+      </div>
+      <label>🌟 What result would make this year a breakthrough?</label>
+      <div class="radio-group">
+        <label><input type="checkbox" name="ideal_result" value="Consistent weekly leads"> Consistent weekly leads</label>
+        <label><input type="checkbox" name="ideal_result" value="Less work, better clients"> Less work, better clients</label>
+        <label><input type="checkbox" name="ideal_result" value="More automation"> More automation</label>
+      </div>
+      <div class="buttons">
+        <button type="button" onclick="prevStep()">⬅️ Back</button>
+        <button type="button" onclick="nextStep()">Next ➡️</button>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step">
+      <label>👤 Your Name *</label>
+      <input type="text" name="name" required>
+      <label>📧 Email Address *</label>
+      <input type="email" name="email" required>
+      <label>📱 Phone Number *</label>
+      <input type="tel" name="phone" required>
+      <label>🔗 Social Media ID (optional)</label>
+      <input type="text" name="social" />
+      <div class="buttons">
+        <button type="button" onclick="prevStep()">⬅️ Back</button>
+        <button type="submit">🚀 I’m Ready – Let’s Go!</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  let currentStep = 0;
+  const steps = document.querySelectorAll('.step');
+  const progressBar = document.getElementById('progressBar');
+
+  function showStep(index) {
+    steps.forEach((step, i) => {
+      step.classList.remove('active');
+      if (i === index) {
+        setTimeout(() => step.classList.add('active'), 50);
       }
-    }
+    });
+    progressBar.style.width = ((index + 1) / steps.length * 100) + "%";
+    currentStep = index;
+  }
 
-    function prevStep() {
-      if (currentStep > 0) {
-        showStep(currentStep - 1);
-      }
+  function nextStep() {
+    if (currentStep < steps.length - 1) {
+      showStep(currentStep + 1);
     }
-  </script>
+  }
+
+  function prevStep() {
+    if (currentStep > 0) {
+      showStep(currentStep - 1);
+    }
+  }
+
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark");
+  }
+
+  window.onload = () => {
+    showStep(currentStep);
+  };
+</script>
 
 </body>
 </html>
