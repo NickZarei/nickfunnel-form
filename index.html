@@ -9,7 +9,7 @@
       margin: 0;
       padding: 2rem;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #f0f4f8, #ffffff);
+      background: linear-gradient(135deg, #d0eaff, #f2f7ff);
     }
 
     .form-container {
@@ -89,7 +89,7 @@
 <body>
 
   <div class="form-container">
-    <img src="https://nickzarei.github.io/nickfunnel-form/Nick%20Funnel.png" alt="ProLead AI Logo" />
+    <img src="https://via.placeholder.com/160x80?text=ProLead+AI+Logo" alt="ProLead AI Logo" />
     <h1>Unlock Your Growth Strategy</h1>
     <p class="subtitle">AI-powered funnel design for professionals ready to scale smarter.</p>
 
@@ -97,22 +97,28 @@
       <input type="hidden" name="_redirect" value="https://nickzarei.github.io/nickfunnel-form/thankyou.html" />
 
       <label>🚧 What’s keeping you from growing faster? *</label>
-      <textarea name="growth_block" required></textarea>
+      <div class="radio-group">
+        <label><input type="checkbox" name="growth_block" value="Not enough qualified leads"> Not enough qualified leads</label>
+        <label><input type="checkbox" name="growth_block" value="Wasting money on wrong ads"> Wasting money on wrong ads</label>
+        <label><input type="checkbox" name="growth_block" value="Tech is overwhelming"> Tech is overwhelming</label>
+        <label><input type="checkbox" name="growth_block" value="Lack of time or structure"> Lack of time or structure</label>
+        <label><input type="checkbox" name="growth_block" value="No clear system"> No clear system</label>
+      </div>
 
       <label>📣 How are you currently generating leads? *</label>
-      <textarea name="current_method" required></textarea>
+      <div class="radio-group">
+        <label><input type="checkbox" name="lead_method" value="Cold calling"> Cold calling</label>
+        <label><input type="checkbox" name="lead_method" value="Facebook/Instagram Ads"> Facebook/Instagram Ads</label>
+        <label><input type="checkbox" name="lead_method" value="Referral only"> Referral only</label>
+        <label><input type="checkbox" name="lead_method" value="I don’t have a lead system"> I don’t have a lead system</label>
+      </div>
 
       <label>🌟 What result would make this year a breakthrough? *</label>
-      <textarea name="ideal_result" required></textarea>
-
-      <label>👔 What best describes your work? *</label>
       <div class="radio-group">
-        <label><input type="radio" name="work_type" value="Realtor" required> Realtor</label>
-        <label><input type="radio" name="work_type" value="Mortgage Broker"> Mortgage Broker</label>
-        <label><input type="radio" name="work_type" value="Consultant / Coach"> Consultant / Coach</label>
-        <label><input type="radio" name="work_type" value="Insurance Advisor"> Insurance Advisor</label>
-        <label><input type="radio" name="work_type" value="Freelancer"> Freelancer</label>
-        <label><input type="radio" name="work_type" value="Other"> Other</label>
+        <label><input type="checkbox" name="ideal_result" value="Consistent leads every week"> Consistent leads every week</label>
+        <label><input type="checkbox" name="ideal_result" value="Better clients with less effort"> Better clients with less effort</label>
+        <label><input type="checkbox" name="ideal_result" value="Passive automation & conversion"> Passive automation & conversion</label>
+        <label><input type="checkbox" name="ideal_result" value="Free time without losing deals"> Free time without losing deals</label>
       </div>
 
       <label>Your Name *</label>
