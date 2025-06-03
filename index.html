@@ -1,29 +1,135 @@
-Form cover
-Form logo
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ProLead AI – Smart Funnel Blueprint</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #f0f4f8, #ffffff);
+    }
 
-Back
+    .form-container {
+      max-width: 680px;
+      margin: auto;
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.08);
+    }
 
-✅ Just one last step to receive your custom Funnel Blueprint!
-What is your name?
-*
-What is your email address?
-*
-What is your phone number?
-*
-Social Media ID (optional)
-*
+    .form-container img {
+      max-width: 160px;
+      display: block;
+      margin: 0 auto 25px;
+    }
 
-🎁 Send Me My Funnel Plan ➜
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      color: #002B5B;
+      margin-bottom: 10px;
+    }
 
+    p.subtitle {
+      text-align: center;
+      color: #444;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
 
-<p style="margin-top: 30px; text-align: center; color: #2E8B57; font-size: 18px;">
-  🙏 Thank you for visiting ProLead AI and taking the first step toward growing your business smarter.  
-  <br/><br/>
-  Our team is already reviewing your answers, and you can expect a personalized funnel strategy delivered to you within the next <strong>24 hours</strong>.
-  <br/><br/>
-  🚀 We’re excited to connect with you and help turn your goals into real, measurable results.  
-  <br/><br/>
-  Let’s build something amazing — together.
-</p>
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: 600;
+      color: #333;
+    }
 
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      background-color: #fafafa;
+    }
 
+    .radio-group {
+      margin-top: 10px;
+    }
+
+    .radio-group label {
+      font-weight: normal;
+      display: block;
+      margin-bottom: 6px;
+      color: #444;
+    }
+
+    button {
+      background: #0070f3;
+      color: white;
+      border: none;
+      padding: 16px 20px;
+      margin-top: 30px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background: #005dc1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <img src="https://nickzarei.github.io/nickfunnel-form/Nick%20Funnel.png" alt="ProLead AI Logo" />
+    <h1>Unlock Your Growth Strategy</h1>
+    <p class="subtitle">AI-powered funnel design for professionals ready to scale smarter.</p>
+
+    <form action="https://formspree.io/f/mdkzovba" method="POST">
+      <input type="hidden" name="_redirect" value="https://nickzarei.github.io/nickfunnel-form/thankyou.html" />
+
+      <label>🚧 What’s keeping you from growing faster? *</label>
+      <textarea name="growth_block" required></textarea>
+
+      <label>📣 How are you currently generating leads? *</label>
+      <textarea name="current_method" required></textarea>
+
+      <label>🌟 What result would make this year a breakthrough? *</label>
+      <textarea name="ideal_result" required></textarea>
+
+      <label>👔 What best describes your work? *</label>
+      <div class="radio-group">
+        <label><input type="radio" name="work_type" value="Realtor" required> Realtor</label>
+        <label><input type="radio" name="work_type" value="Mortgage Broker"> Mortgage Broker</label>
+        <label><input type="radio" name="work_type" value="Consultant / Coach"> Consultant / Coach</label>
+        <label><input type="radio" name="work_type" value="Insurance Advisor"> Insurance Advisor</label>
+        <label><input type="radio" name="work_type" value="Freelancer"> Freelancer</label>
+        <label><input type="radio" name="work_type" value="Other"> Other</label>
+      </div>
+
+      <label>Your Name *</label>
+      <input type="text" name="name" required>
+
+      <label>Email Address *</label>
+      <input type="email" name="email" required>
+
+      <label>Phone Number *</label>
+      <input type="tel" name="phone" required>
+
+      <label>Social Media ID (optional)</label>
+      <input type="text" name="social" />
+
+      <button type="submit">🎯 Design My Funnel Plan Now</button>
+    </form>
+  </div>
+
+</body>
+</html>
